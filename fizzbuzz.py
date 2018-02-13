@@ -6,18 +6,32 @@ Regras do FizzBuzz
 3. Se a posição for múltipla de 3 e 5: fizzbuzz
 4. Para as demais posições: o próprio número
 """
+
+#Calcula os múltiplos de 3
+def multiple_of_3(num):
+    return num % 3 == 0
+
+
+#Calcula os múltiplos de 5
+def multiple_of_5(num):
+    return num % 5 == 0
+
+
 def robot(poss):
 
+    say = str(poss)
+
     if poss % 5 == 0 and poss % 3 == 0:
-        return 'fizzbuzz'
+        say = 'fizzbuzz'
 
-    if poss % 5 == 0:
-        return 'buzz'
+    elif multiple_of_5(poss):
+        say = 'buzz'
 
-    if poss % 3 == 0:
-        return 'fizz'
+    elif multiple_of_3(poss):
+        say = 'fizz'
 
-    return str(poss)
+    return say
+
 
 if __name__ == '__main__':
     assert robot(1) == '1'
