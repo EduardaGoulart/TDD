@@ -7,21 +7,18 @@ Regras do FizzBuzz
 4. Para as demais posições: o próprio número
 """
 
-#Calcula os múltiplos de 3
-def multiple_of_3(num):
-    return num % 3 == 0
+from functools import partial
 
-
-#Calcula os múltiplos de 5
-def multiple_of_5(num):
-    return num % 5 == 0
+multiple_of = lambda base, num : num % base == 0
+multiple_of_5 = partial(multiple_of,5)
+multiple_of_3 = partial(multiple_of,3)
 
 
 def robot(poss):
 
     say = str(poss)
 
-    if poss % 5 == 0 and poss % 3 == 0:
+    if multiple_of_3(poss) and multiple_of_5(poss):
         say = 'fizzbuzz'
 
     elif multiple_of_5(poss):
